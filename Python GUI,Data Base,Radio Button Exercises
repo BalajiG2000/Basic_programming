@@ -1,0 +1,443 @@
+                                                         LAB 10 GUI
+1. Write a python script to show a root graphical window.
+
+from Tkinter import *
+root=Tk()
+root.mainloop()
+
+2. Write a python script to add hello world on the root window of GUI
+
+from Tkinter import *
+root=Tk()
+Label(root,text="HELLO WORLD").pack()
+root.mainloop()
+
+4. Write a python script to add a button on the root window, name the button as GO
+
+from Tkinter import *
+root=Tk()
+Label(root,text="HELLO WORLD").pack()
+Button(root,text="GO").pack()
+root.mainloop()
+
+5. Write a python script to add event to the button added in previous problem and add
+string “Welcome....” to button event to the root window
+
+from Tkinter import *
+root=Tk()
+Label(root,text="HELLO WORLD").pack()
+def func():
+    Label(root,text="WELCOME.....").pack()
+Button(root,text="GO",command=func).pack()
+root.mainloop()
+
+6. Write a python script to add text box in GUI.
+
+from Tkinter import *
+root=Tk()
+Entry(root).pack()
+root.mainloop()
+
+7. Write a python script to read First Name and Last Name using text boxes, Wish the user
+with the first name “ ….name…. Welcome to Python”
+
+from Tkinter import *
+root=Tk()
+Label(root,text="ENTER THE FIRST NAME").pack()
+s=Entry(root)
+s.pack()
+def func():
+    Label(root,text=s.get()+ " WELCOME ").pack()
+Label(root,text="ENTER THE LAST NAME").pack()
+Entry(root).pack()
+Button(root,text="GO",command=func).pack()
+root.mainloop()
+
+8. Write a python script to read two numbers and print their Sum/ Diff/ Multiplication/ Div/
+Remainder on screen, using button for each operation.
+
+from Tkinter import *
+root=Tk()
+Label(root,text="ENTER THE FIRST NUMBER").pack()
+s=Entry(root)
+s.pack()
+Label(root,text="ENTER THE LAST NUMBER").pack()
+p=Entry(root)
+p.pack()
+def ADD():
+        Label(root,text= "sum of two numbers : "+str(int(s.get())+int(p.get()))).pack()
+Button(root,text="ADD",command=ADD).pack()
+def SUB():
+    Label(root,text="difference of two numbers : "+str(int(s.get())-int(p.get()))).pack()
+Button(root,text="SUBRACT",command=SUB).pack()
+def MULTI():
+    Label(root,text="product of two numbers : "+str(int(s.get())*int(p.get()))).pack()
+Button(root,text="MULTIPLY",command=MULTI).pack()
+def DIV():
+    Label(root,text="division of two numbers : "+str(int(s.get())/int(p.get()))).pack()
+Button(root,text="DIVIDE",command=DIV).pack()
+def MOD():
+    Label(root,text="modular division of two numbers : "+str(int(s.get())%int(p.get()))).pack()
+Button(root,text="MOD",command=MOD).pack()
+root.mainloop()
+
+9. Write a python script that creates a GUI with a single button. When the button is pressed
+it should create a second button. When that button is pressed, it should create a label that
+says, “Nice job!”. What happens if you press the buttons more than once?
+
+from Tkinter import *
+root=Tk()
+def func2():
+    Label(root,text="NICE JOB!!").pack()
+def func1():
+    Button(root,text="GO 2",command=func2).pack()
+Button(root,text="GO 1",command=func1).pack()
+root.mainloop()
+
+10. Write a python script to computer simple interest on the root window.
+
+from Tkinter import *
+root=Tk()
+Label(root,text="ENTER THE PRINCIPLE AMT ").pack()
+s=Entry(root)
+s.pack()
+Label(root,text="ENTER THE RATE OF INTREST IN PERCENTAGE ").pack()
+p=Entry(root)
+p.pack()
+Label(root,text="ENTER THE TIME PERIOD IN YEAR ").pack()
+t=Entry(root)
+t.pack()
+def func1():
+    si=int(s.get())+(1-int(p.get())*int(t.get()))
+    Label(root,text="THE SIMPLE INTREST IS "+str(si)).pack()
+Button(root,text="GO",command=func1).pack()
+root.mainloop()
+                                                      LAB 11 RADIO BUTTON
+1. Write a GUI program to receive temperature (in Celsius) as user input in a entry convert and
+print the temperature in Fahrenheit.
+
+from Tkinter import *
+def convert():
+    x = entry.get()
+    if x != "":    
+        cel=int(x)
+        far=(9/5*(cel))+32
+        Label(root,text="temp in farenheit is "+(str)(far)).pack()
+root=Tk()
+root.title("Some GUI")
+root.geometry("400x700")
+Label(root,text="Enter a Celcius temperature.").pack()
+entry = Entry(root)
+entry.pack()
+Button(root, text="Convert", command=convert).pack()
+root.mainloop()
+
+2. Write a program to receive a number in entry and print Prime if the number is prime
+number otherwise Not Prime.
+
+from Tkinter import *
+def convert():
+    num=entry.get()
+    if (int)(num) > 1:
+        for i in range(2,(int)(num)):
+           if ((int)(num) % i) == 0:
+               Label(root,text=(str)(num)+" is not a prime number").pack()
+               break
+        else:
+            Label(root,text=(str)(num)+" is a prime number").pack()
+    else:
+       Label(root,text=(str)(num)+" is not a prime number").pack()
+root=Tk()
+root.title("Some GUI")
+root.geometry("400x500")
+Label(root,text="Enter a number .").pack()
+entry = Entry(root)
+entry.pack()
+Button(root, text="check", command=convert).pack()
+root.mainloop()
+
+3. Create two radio buttons to receive gender of the user, and display the selection on click of
+button ‘Gender’.
+
+from Tkinter import *
+def convert():
+    if v1.get()== 1:
+        Label(root,text="Male").pack()
+    if v1.get()==2: 
+        Label(root,text="Female").pack()
+root=Tk()
+root.title("Some GUI")
+root.geometry("400x500")
+v1=IntVar()
+r1=Radiobutton(root,text="Male",variable=v1,value=1)
+r1.pack()
+r2=Radiobutton(root,text="Female",variable=v1,value=2)
+r2.pack()
+Button(root, text="gender", command=convert).pack()
+root.mainloop()
+
+4. Create three check buttons to receive your favourite colours among red /green
+/yellow/purple, and display the selected choice(s).
+
+from Tkinter import *
+def convert():
+    if v1.get()==1:
+        Label(root,text="Blue").pack()
+    if v2.get()==2:
+        Label(root,text="Green").pack()
+    if v3.get()==3:
+        Label(root,text="Black").pack()
+ root=Tk()
+root.geometry("400x500")
+v1=IntVar()
+v3=IntVar()
+v2=IntVar()
+Checkbutton(root,text="Blue",variable=v1,onvalue=1).pack()
+Checkbutton(root,text="Green",variable=v2,onvalue=2).pack()
+Checkbutton(root,text="Black",variable=v3,onvalue=3).pack()
+Button(root, text="Show color", command=convert).pack()
+root.mainloop()
+
+                                                           LAB 12 DATA BASE
+1. Create a python script for Employee Record Keeping System
+
+from Tkinter import *
+root=Tk()
+import sqlite3
+from tkMessageBox import *
+con=sqlite3.Connection('EMP_DATABASE')
+cur=con.cursor()
+cur.execute("create table if not exists emp(cid integer primary key,fname varchar(15),lname varchar(15))")
+Label(root,text='EMPLOYEE RECORD KEEPING SYSTEM: ').grid(row=0,column=1)
+Label(root,text='Enter emp code:').grid(row=1,column=0)
+e1=Entry(root)
+e1.grid(row=1,column=1)
+Label(root,text='Enter emp fname:').grid(row=2,column=0)
+e2=Entry(root)
+e2.grid(row=2,column=1)
+Label(root,text='Enter emp lName:').grid(row=3,column=0)
+e3=Entry(root)
+e3.grid(row=3,column=1)
+Label(root,text='Enter id to fetch record :').grid(row=4,column=0)
+e4=Entry(root)
+e4.grid(row=4,column=1)
+def insert():
+    cur.execute("insert into emp(cid,fname,lname) values(?,?,?)",(e1.get(),e2.get(),e3.get()))
+    con.commit()
+    cur.fetchall()
+    showinfo('info',"record inserted successfully"
+def show():
+    cur.execute("select * from emp")
+    con.commit()
+    print cur.fetchall()
+def showsearch():
+    cur.execute("select * from emp")
+    s=cur.fetchall()
+    cur.execute("select * from emp where cid=?",e4.get())
+    q=cur.fetchall()
+    for i in range(len(s)):
+        if (int(s[i][0]) == int(e4.get())):
+            print q
+            return
+    showerror("user doesn't exist","Enter valid cid")
+ Button(root,text='Insert',command=insert).grid(row=5,column=0)
+Button(root,text='show',command=showsearch).grid(row=5,column=1)
+Button(root,text='show all',command=show).grid(row=5,column=2)
+mainloop()
+
+2. Create a python script for Student Record Keeping System.
+
+from Tkinter import *
+import sqlite3
+con=sqlite3.Connection("student6")
+cur=con.cursor()
+root=Tk()
+Label(root,text="student record ",font="times 20",relief="ridge").grid(row=0,column=0,columnspan=3)
+Label(root,text="enrollment number").grid(row=1,column=0)
+e1=Entry(root)
+e1.grid(row=1,column=1)
+Label(root,text="enter your first name").grid(row=1,column=2)
+e2=Entry(root)
+e2.grid(row=1,column=3)
+Label(root,text="enter your last name").grid(row=1,column=4)
+e3=Entry(root)
+e3.grid(row=1,column=5)
+Label(root,text="enter your dob in DD/MM/YYYY").grid(row=2,column=0)
+e4=Entry(root)
+e4.grid(row=2,column=1)
+Label(root,text="enter your  father's name").grid(row=2,column=2)
+e5=Entry(root)
+e5.grid(row=2,column=3)
+Label(root,text=" qualification").grid(row=3,column=0)
+v1=IntVar()
+v2=IntVar()
+v3=IntVar()
+v4=IntVar()
+r=Checkbutton(root,text="btech",variable=v1,onvalue="4")
+r.grid(row=3,column=1)
+r1=Checkbutton(root,text="mtech",variable=v2,onvalue="3")
+r1.grid(row=3,column=2)
+r2=Checkbutton(root,text="phd",variable=v3,onvalue="2")
+r2.grid(row=3,column=3)
+Label(root,text="please select your branch").grid(row=4,column=0)
+r4=Radiobutton(root,text="cse",variable=v4,value=0).grid(row=4,column=1)
+r4=Radiobutton(root,text="ece",variable=v4,value=1).grid(row=4,column=2)
+r4=Radiobutton(root,text="me",variable=v4,value=2).grid(row=4,column=3)
+r4=Radiobutton(root,text="ce",variable=v4,value=3).grid(row=4,column=4)
+r4=Radiobutton(root,text="che",variable=v4,value=4).grid(row=4,column=5)
+print r4
+def choice():
+    a=""
+    if v3.get()==2:
+        a="phd"+a
+    if v2.get()==3:
+        a=a+"mtech"
+    if v1.get()==4:
+        a=a+"btech"
+    if v4.get()==0:
+        b="cse"
+    if v4.get()==1:
+        b="ece"
+    if v4.get()==2:
+        b="me"
+    if v4.get()==3:
+        b="ce"
+    if v4.get()==4:
+        b="che"
+    Label(root,text="you are " +str(e1.get())+ " "+a+" "+b).grid(row=5,column=0)
+ 
+##Button(root,text="see Details",relief="ridge",command=choice).grid(row=6,column=0)
+Label(root,text="enter your registration date").grid(row=6,column=0)
+e6=Entry(root)
+e6.grid(row=6,column=1)
+Label(root,text="enter your address").grid(row=6,column=2)
+e7=Entry(root)
+e7.grid(row=6,column=3)
+Label(root,text="enter your email").grid(row=6,column=4)
+e8=Entry(root)
+e8.grid(row=6,column=5)
+Label(root,text="enter your cgpa").grid(row=7,column=0)
+e9=Entry(root)
+e9.grid(row=7,column=1)
+Label(root,text="enter your hobbies").grid(row=8,column=0)
+e10=Entry(root)
+e10.grid(row=8,column=1)
+Label(root,text="certification").grid(row=10,column=0)
+g1=IntVar()
+g2=IntVar()
+g3=IntVar()
+g4=IntVar()
+r=Checkbutton(root,text="RHCE",variable=g1,onvalue="4")
+r.grid(row=10,column=1)
+r1=Checkbutton(root,text="MCSE",variable=g2,onvalue="3")
+r1.grid(row=10,column=2)
+r2=Checkbutton(root,text="CCNA",variable=g3,onvalue="2")
+r2.grid(row=10,column=3)
+r3=Checkbutton(root,text="OCP",variable=g1,onvalue="1")
+r3.grid(row=10,column=4)
+
+def fun1():
+    
+    a=""
+    if v3.get()==2:
+        a="phd"+a
+    if v2.get()==3:
+        a=a+"mtech"
+    if v1.get()==4:
+        a=a+"btech"
+    if v4.get()==0:
+        b="cse"
+    if v4.get()==1:
+        b="ece"
+    if v4.get()==2:
+        b="me"
+    if v4.get()==3:
+        b="ce"
+    if v4.get()==4:
+        b="che"
+    g=""
+    if v3.get()==2:
+        g="MCSE"+g
+    if v2.get()==3:
+        g=g+"CCNA"
+    if v1.get()==4:
+        g=g+"OCP"
+    f=(e1.get(),e2.get(),e3.get(),e4.get(),e5.get(),e6.get(),e7.get(),e8.get(),e9.get(),e10.get(),a,b,g)
+    cur.execute("insert into emp values(?,?,?,?,?,?,?,?,?,?,?,?,?)",f)
+    e1.delete(0,END)
+    e1.insert(0,' ')
+    e2.delete(0,END)
+    e2.insert(0,' ')
+    e3.delete(0,END)
+    e3.insert(0,' ')
+    e4.delete(0,END)
+    e4.insert(0,' ')
+    e5.delete(0,END)
+    e5.insert(0,' ')
+    e6.delete(0,END)
+    e6.insert(0,' ')
+    e7.delete(0,END)
+    e7.insert(0,' ')
+    e8.delete(0,END)
+    e8.insert(0,' ')
+    e9.delete(0,END)
+    e9.insert(0,' ')
+    e10.delete(0,END)
+    e10.insert(0,' ')
+
+def feb():
+    cur.execute("select * from emp where id=?",(e11.get(),))
+    con.commit()
+    x=cur.fetchall()
+    Label(root,text=x[0]).grid(row=17,column=0)
+def fun3():
+    e1.delete(0,END)
+    e1.insert(0,' ')
+    e2.delete(0,END)
+    e2.insert(0,' ')
+    e3.delete(0,END)
+    e3.insert(0,' ')
+    cur.execute("select * from emp")
+    con.commit()
+    x=cur.fetchall()
+    root=Tk()
+    root.title("record")
+    Label(root,text="emp code").grid(row=0,column=0)
+    Label(root,text="first name").grid(row=0,column=1)
+    Label(root,text="last name").grid(row=0,column=2)
+    Label(root,text="date of birth").grid(row=0,column=3)
+    Label(root,text="father's name").grid(row=0,column=4)
+    Label(root,text="registrtion date").grid(row=0,column=5)
+    Label(root,text="address").grid(row=0,column=6)
+    Label(root,text="gmail").grid(row=0,column=7)
+    Label(root,text="cgpa").grid(row=0,column=8)
+    Label(root,text="hobbies").grid(row=0,column=9)
+    Label(root,text="qualification").grid(row=0,column=7)
+    Label(root,text="branch").grid(row=0,column=8)
+    Label(root,text="certifiction").grid(row=0,column=9)
+
+    
+    k=1
+    for i in x:
+        Label(root,text=i[0]).grid(row=k,column=0)
+        Label(root,text=i[1]).grid(row=k,column=1)
+        Label(root,text=i[2]).grid(row=k,column=2)
+        Label(root,text=i[3]).grid(row=k,column=3)
+        Label(root,text=i[4]).grid(row=k,column=4)
+        Label(root,text=i[5]).grid(row=k,column=5)
+        Label(root,text=i[6]).grid(row=k,column=6)
+        Label(root,text=i[7]).grid(row=k,column=7)
+        Label(root,text=i[8]).grid(row=k,column=8)
+        Label(root,text=i[9]).grid(row=k,column=9)
+        k+=1   
+    root.mainloop()
+cur.execute("create table if not exists  emp(id number primary key ,firstname varchar(20),lastname varchar(20),dob date,father name varchar (20),registration date,address varchar(20),email varchar(20),cgpa varchar (2),hobies varchar (20),qualfication varchar(20),branch varchar(5),certification varchar (10))")
+Button(root,text="insert",command=fun1).grid(row=11,column=0)
+#Button(root,text="show",command=fun2).grid(row=11,column=1)
+Button(root,text="show all",command=fun3).grid(row=11,column=3)
+Label(root,text="showing record of eter student").grid(row=12,column=0,columnspan=4)
+Label(root,text="enrollment of student").grid(row=13,column=0)
+e11=Entry(root)
+e11.grid(row=13,column=1)
+Button(root,text="go",command=feb).grid(row=13,column=2)
+mainloop()
