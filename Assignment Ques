@@ -1,0 +1,138 @@
+##ALL ARE WRITTEN IN CPP
+Given an array A, write an algorithm to find the number of inversions in the array A. If (i < j)
+and (A[i] > A[j]) then the pair (i, j) is called an inversion of an array A.
+For example,
+Input: A[] =[1, 9, 6, 4, 5]
+Output: Inversion count is 5
+There are 5 inversions in the array - (9, 6), (9, 4), (9, 5), (6, 4), (6, 5)
+
+SOLN
+#include<iostream>
+using namespace std;
+int inverse(int n,int a[])
+{   int count=0;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(i<j)
+            {
+                if(a[i]>a[j])
+                    count++;
+            }
+        }
+    }
+    return count;
+}
+int main()
+{
+    int n;
+    cout<<"ENTER THE SIZE OF ARRAY: \n";
+    cin>>n;
+    int a[n];
+    cout<<"ENTER THE ARRAY ELEMENTS: "<<endl;
+    for(int i=0;i<n;i++)
+        cin>>a[i];
+    int k=inverse(n,a);
+    cout<<"THE NUMBER OF PAIRS FOUND IS "<<k;
+    return 0;
+}
+
+
+
+Write an efficient algorithm to sort the array of binary elements.
+For example,
+Input: A [] =[1, 0, 1, 0, 1, 1, 0]
+Output: Array after sorting A []=[0, 0, 0, 1, 1, 1, 1]
+
+
+SOLN
+#include<iostream>
+using namespace std;
+int sortbinary(int n,int arr[])
+{
+	int j = -1,temp;
+    for (int i = 0; i < n; i++) {
+        if (i!=j&&arr[i] < 1){
+            j++;
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+    }
+	for (int i = 0; i < n; i++)
+		cout<< arr[i]<<"\t";
+}
+int main()
+{   int n;
+    cout<<"ENTER THE SIZE OF ARRAY: \n";
+    cin>>n;
+    int arr[n];
+    cout<<"ENTER THE ARRAY ELEMENTS: "<<endl;
+    for(int i=0;i<n;i++)
+        cin>>arr[i];
+    sortbinary(n,arr);
+    return 0;
+}
+
+
+Write selection sort and insertion sort algorithms to arrange the nodes of the given singly
+linked list in the ascending order.
+For example:
+Input: 2 —> 3 —>15—>1—>2—>0—>8—>NULL
+Output: 0—> 1—>2—>2—>3—>8—>15—>NULL
+
+
+SOLN
+#include <iostream>
+
+class Node {
+
+public:
+
+    Node *next;
+
+    int data;
+};
+
+typedef Node * ListType;
+
+void insertionSort(ListType &list) {
+    ListType *p = &list;
+
+    while ( (*p)->next && (*p)->next->data < (*p)->data)
+    {
+        ListType node= *p;
+
+        *p=node->next;
+
+        node->next=node->next->next;
+
+        (*p)->next=node;
+
+        p= &(*p)->next;
+    }
+}
+
+int main()
+{
+    Node *head=0;
+
+    int n;
+
+    while (std::cout << ">>> ", std::cin >> n)
+    {
+        Node *p=new Node;
+
+        p->data=n;
+
+        p->next=head;
+        head=p;
+
+        insertionSort(head);
+
+        for (p=head; p; p=p->next)
+            std::cout << p->data << " ";
+        std::cout << std::endl;
+    }
+}
